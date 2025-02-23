@@ -1,6 +1,9 @@
 import Image from "next/image";
+import { addTask } from "../actions/actions";
+import { prisma } from "../lib/db";
 
 export default async function Home() {
+  const tasks = await prisma.task.findMany();
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
@@ -48,10 +51,15 @@ export default async function Home() {
             Read our docs
           </a>
         </div>
-
-        <form className="flex gap-4 items-center flex-col sm:flex-row">
+          <ul className="my-10 text-center">
+          {tasks.map((task) => (
+            <li key={task.id}>{task.title}</li>
+          ))}
+          </ul>
+        <form action= {addTask} className="flex gap-4 items-center flex-col sm:flex-row">
           <input
             type="text"
+            name="title"
             className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors px-4 h-10 sm:h-12 text-sm sm:text-base focus:outline-none focus:border-black/[.32] dark:focus:border-white/[.32] text-black"
             placeholder="Enter text..."
           />
