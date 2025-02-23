@@ -48,7 +48,20 @@ export default async function Home() {
             Read our docs
           </a>
         </div>
-      </main>
+
+        <form className="flex gap-4 items-center flex-col sm:flex-row">
+          <input
+            type="text"
+            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors px-4 h-10 sm:h-12 text-sm sm:text-base focus:outline-none focus:border-black/[.32] dark:focus:border-white/[.32] text-black"
+            placeholder="Enter text..."
+          />
+          <button
+            type="submit"
+            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+          >
+            Submit
+          </button>
+        </form>      </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
