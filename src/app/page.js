@@ -2,12 +2,13 @@ import Image from "next/image";
 import { addTask } from "../actions/actions";
 import { prisma } from "../lib/db";
 import { revalidatePath } from 'next/cache';
+import { Reorder } from "framer-motion";
 
 export default async function Home() {
   const tasks = await prisma.task.findMany({
     orderBy: {
       id: 'asc'
-    } 
+    }  
   });
 
   for (let i = 0; i < tasks.length; i++) {
