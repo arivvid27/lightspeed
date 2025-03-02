@@ -7,7 +7,7 @@ export default async function Home() {
   const tasks = await prisma.task.findMany({
     orderBy: {
       id: 'asc'
-    }
+    } 
   });
 
   for (let i = 0; i < tasks.length; i++) {
